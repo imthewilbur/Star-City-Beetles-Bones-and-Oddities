@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imthewilbur.github.io/Star-City-Beetles-Bones-and-Oddities/sitemap.xml
