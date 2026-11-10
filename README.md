@@ -2,7 +2,7 @@
 
 Website for Star City Beetles, Bones & Oddities: dermestid beetle cleaning for skulls and specimens in Lincoln, Nebraska.
 
-Static site served by GitHub Pages from the `main` branch root.
+Static site served by GitHub Pages from the `main` branch root at **https://starcitybeetles.com** (custom domain set by the `CNAME` file; DNS at Squarespace).
 
 ## Updating
 
