@@ -431,6 +431,47 @@ a{color:inherit}
 .shelf-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
 .shelf-list span{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);background:rgba(10,10,10,.6);padding:8px 12px}
 
+/* ---------- FOR SALE (from shelf.json) ---------- */
+.sale{padding:110px 0 120px;background:var(--black);border-bottom:1px solid var(--line)}
+.sale .sec-head .heavy{font-size:clamp(3rem,7vw,6.4rem);color:#fff}
+.sale .sec-head .heavy em{font-style:normal;color:var(--blood-hi)}
+.sale-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.item{background:var(--char);border:1px solid var(--line);display:flex;flex-direction:column;position:relative;transition:border-color .25s}
+.item:hover{border-color:rgba(201,204,209,.35)}
+.item-fig{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;background:#0d0d0d;cursor:zoom-in}
+.item-fig img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.item:hover .item-fig img{transform:scale(1.03)}
+.item-no{position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;background:rgba(10,10,10,.8);color:var(--silver);padding:6px 9px;border:1px solid var(--line)}
+.item-count{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;background:rgba(10,10,10,.8);color:var(--silver);padding:6px 9px}
+.thumbs{display:flex;gap:6px;padding:8px;border-bottom:1px solid var(--line)}
+.thumbs button{flex:0 0 52px;height:52px;padding:0;border:1px solid var(--line);background:none;cursor:pointer;opacity:.55;transition:opacity .2s,border-color .2s}
+.thumbs button.on,.thumbs button:hover{opacity:1;border-color:var(--blood-hi)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.item-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.item-body h3{font-family:var(--heavy);font-weight:800;font-size:1.65rem;line-height:1;text-transform:uppercase;color:#fff;overflow-wrap:anywhere}
+.item-body p{color:var(--steel);font-size:.95rem;white-space:pre-line}
+.item-foot{margin-top:auto;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.item-price{font-family:var(--heavy);font-weight:900;font-size:2rem;color:#fff;line-height:1}
+.item-ask{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--blood);color:#fff;padding:11px 14px;transition:background .2s}
+.item-ask:hover{background:var(--blood-hi)}
+.item-mail{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.item.sold .item-fig img{filter:grayscale(1) brightness(.55)}
+.item.sold .item-price{color:var(--dim);text-decoration:line-through;text-decoration-color:var(--blood-hi)}
+.item.sold .item-ask{display:none}
+.stamp-sold{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-14deg);font-family:var(--heavy);font-weight:900;font-size:clamp(2.6rem,6vw,3.6rem);letter-spacing:.08em;color:var(--blood-hi);border:5px solid var(--blood-hi);padding:4px 18px 0;line-height:1;background:rgba(10,10,10,.35);pointer-events:none;box-shadow:0 0 0 3px rgba(10,10,10,.4)}
+.sale-note{margin-top:28px;color:var(--dim);font-size:.92rem}
+.sale-note a{color:var(--silver)}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(5,5,5,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:86vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb button{position:absolute;background:rgba(10,10,10,.7);border:1px solid var(--line);color:#fff;font-family:var(--mono);font-size:1.1rem;width:48px;height:48px;cursor:pointer}
+.lb .lb-x{top:18px;right:18px}
+.lb .lb-p{left:18px;top:50%;transform:translateY(-50%)}
+.lb .lb-n{right:18px;top:50%;transform:translateY(-50%)}
+.lb .lb-cap{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+@media (max-width:1000px){.sale-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.sale{padding:84px 0}.sale-grid{grid-template-columns:1fr}}
+
 /* ---------- INDEX (what we clean + pricing) ---------- */
 .index{padding:130px 0}
 .rows{border-top:2px solid var(--silver)}
@@ -722,9 +763,28 @@ footer a:hover{color:var(--blood-hi)}
       <p class="rv">Not everything here is a customer's trophy. Shelves of cleaned, tagged skulls, gator heads, framed fish rostrums and things you won't find anywhere else in Lincoln. Collectors, artists, teachers, the merely curious: come see what's in the case.</p>
       <div class="shelf-list rv"><span>Predators</span><span>Small mammals</span><span>Gators</span><span>Fish</span><span>Framed pieces</span><span>Weird stuff</span></div>
     </div>
-    <div class="ctas rv" style="justify-content:flex-start;margin-top:34px"><a class="btn red" href="https://www.facebook.com/p/Star-City-Beetles-Bones-and-Oddities-100048446535785/" target="_blank" rel="noopener">Ask what's available <span class="arr">→</span></a></div>
+    <div class="ctas rv" style="justify-content:flex-start;margin-top:34px"><a class="btn red" id="shelf-cta" href="https://www.facebook.com/p/Star-City-Beetles-Bones-and-Oddities-100048446535785/" target="_blank" rel="noopener">Ask what's available <span class="arr">→</span></a></div>
   </div>
 </section>
+
+<!-- FOR SALE: items load from shelf.json (updated by the Tally form) -->
+<section class="sale" id="for-sale" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="mono red">On the shelf now</p><h2 class="heavy" style="margin-top:14px">For <em>Sale</em></h2></div>
+      <p>Cleaned skulls and oddities ready to take home. Text or email about any piece by its number. Pickup in Lincoln, shipping available on most items.</p>
+    </div>
+    <div class="sale-grid" id="sale-grid"></div>
+    <p class="sale-note">New pieces go up as they come off the colony. Follow along on <a href="https://www.facebook.com/p/Star-City-Beetles-Bones-and-Oddities-100048446535785/" target="_blank" rel="noopener">Facebook</a> or <a href="https://www.instagram.com/star.city.beetles.bones/" target="_blank" rel="noopener">Instagram</a>.</p>
+  </div>
+</section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-x" type="button" aria-label="Close">✕</button>
+  <button class="lb-p" type="button" aria-label="Previous photo">←</button>
+  <img alt="">
+  <button class="lb-n" type="button" aria-label="Next photo">→</button>
+  <div class="lb-cap"></div>
+</div>
 
 <!-- INDEX / PRICING -->
 <section class="index" id="index">
@@ -897,6 +957,77 @@ const SITE = {
     if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
   }), {threshold:.1, rootMargin:"0px 0px -40px 0px"}) : null;
   document.querySelectorAll(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+})();
+</script>
+<script>
+/* =====================================================
+   FOR SALE: renders shelf.json. Do not edit items here;
+   they come from the Tally form via the Shelf Update action.
+   ===================================================== */
+(function(){
+  const PHONE = "+14024166478", EMAIL = "beetleman@yahoo.com";
+  const sec = document.getElementById("for-sale"), grid = document.getElementById("sale-grid");
+  const lb = document.getElementById("lb"), lbImg = lb.querySelector("img"), lbCap = lb.querySelector(".lb-cap");
+  let lbList = [], lbIdx = 0, lbName = "";
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const num = id => "#" + String(id).padStart(2, "0");
+
+  function openLb(list, i, name){ lbList = list; lbIdx = i; lbName = name; showLb(); lb.classList.add("open"); document.body.style.overflow = "hidden"; }
+  function showLb(){ lbImg.src = lbList[lbIdx]; lbImg.alt = lbName; lbCap.textContent = lbName + (lbList.length > 1 ? "  ·  " + (lbIdx + 1) + " / " + lbList.length : "");
+    lb.querySelector(".lb-p").style.display = lb.querySelector(".lb-n").style.display = lbList.length > 1 ? "" : "none"; }
+  function closeLb(){ lb.classList.remove("open"); document.body.style.overflow = ""; }
+  lb.querySelector(".lb-x").onclick = closeLb;
+  lb.querySelector(".lb-p").onclick = e => { e.stopPropagation(); lbIdx = (lbIdx - 1 + lbList.length) % lbList.length; showLb(); };
+  lb.querySelector(".lb-n").onclick = e => { e.stopPropagation(); lbIdx = (lbIdx + 1) % lbList.length; showLb(); };
+  lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", e => { if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") closeLb(); if (e.key === "ArrowLeft") lb.querySelector(".lb-p").click(); if (e.key === "ArrowRight") lb.querySelector(".lb-n").click(); });
+
+  function card(it){
+    const sold = it.status === "sold", photos = (it.photos || []).filter(Boolean), sm = i => (it.thumbs || [])[i] || photos[i];
+    const c = el("article", "item" + (sold ? " sold" : "")); c.id = "item-" + it.id;
+    const fig = el("figure", "item-fig"), img = el("img");
+    img.src = sm(0) || "images/logo.png"; img.alt = it.name; img.loading = "lazy";
+    fig.append(img, el("span", "item-no", num(it.id)));
+    if (photos.length > 1) fig.append(el("span", "item-count", photos.length + " photos"));
+    if (sold) fig.append(el("span", "stamp-sold", "SOLD"));
+    let cur = 0;
+    fig.addEventListener("click", () => photos.length && openLb(photos, cur, it.name));
+    c.append(fig);
+    if (photos.length > 1){
+      const th = el("div", "thumbs");
+      photos.forEach((src, i) => { const b = el("button"); b.type = "button"; b.setAttribute("aria-label", "Photo " + (i + 1));
+        const t = el("img"); t.src = sm(i); t.alt = ""; t.loading = "lazy"; b.append(t); if (i === 0) b.classList.add("on");
+        b.onclick = () => { cur = i; img.src = sm(i); th.querySelectorAll("button").forEach(x => x.classList.remove("on")); b.classList.add("on"); };
+        th.append(b); });
+      c.append(th);
+    }
+    const body = el("div", "item-body");
+    body.append(el("h3", null, it.name));
+    if (it.description) body.append(el("p", null, it.description));
+    const foot = el("div", "item-foot");
+    foot.append(el("span", "item-price", sold ? (it.price || "Sold") : (it.price || "Call for price")));
+    if (!sold){
+      const msg = "Hi, I'm interested in " + num(it.id) + " " + it.name + " from your website.";
+      const ask = el("a", "item-ask", "Text about " + num(it.id)); ask.href = "sms:" + PHONE + "?&body=" + encodeURIComponent(msg);
+      const mail = el("a", "item-mail", "or email"); mail.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(num(it.id) + " " + it.name) + "&body=" + encodeURIComponent(msg);
+      const wrap = el("span"); wrap.style.cssText = "display:flex;align-items:center;gap:12px"; wrap.append(ask, mail);
+      foot.append(wrap);
+    }
+    body.append(foot); c.append(body);
+    return c;
+  }
+
+  fetch("shelf.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).then(data => {
+    const items = (data && data.items) || [];
+    if (!items.length) return;
+    const avail = items.filter(i => i.status !== "sold").sort((a, b) => b.id - a.id);
+    const sold = items.filter(i => i.status === "sold").sort((a, b) => String(b.soldDate || "").localeCompare(String(a.soldDate || "")) || b.id - a.id).slice(0, 12);
+    [...avail, ...sold].forEach(it => grid.append(card(it)));
+    sec.hidden = false;
+    const cta = document.getElementById("shelf-cta");
+    if (cta && avail.length){ cta.href = "#for-sale"; cta.removeAttribute("target"); cta.innerHTML = "See what's for sale <span class=\"arr\">→</span>"; }
+  }).catch(() => {});
 })();
 </script>
 </body>
